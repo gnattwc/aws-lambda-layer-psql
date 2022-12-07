@@ -1,0 +1,23 @@
+service: aws-lambda-layer-psql
+frameworkVersion: ">=1.34.0"
+
+custom:
+  Stage: ${env:DeploymentStage, env:NODE_ENV}
+
+provider:
+  name: aws
+  stage: ${env:NODE_ENV}
+  region: ${env:AWS_DEFAULT_REGION}
+  stackName: aws-psql-layer-${self:custom.Stage}
+
+layers:
+  psql:
+    path: layer
+
+resources:
+  Outputs:
+    PsqlLayerExport:
+        Value:
+          Ref: PsqlLambdaLayer
+        Export:
+          Name: PsqlLambdaLayer-${self:custom.Stage}

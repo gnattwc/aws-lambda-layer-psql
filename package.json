@@ -1,0 +1,11 @@
+{
+  "name": "aws-lambda-layer-psql",
+  "description": "",
+  "version": "0.1.0",
+  "scripts": {
+    "setup": "npx sls deploy --verbose",
+    "teardown": "npx serverless remove --verbose"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
